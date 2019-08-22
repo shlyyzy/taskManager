@@ -59,7 +59,7 @@ public class EditTaskController implements Initializable {
         taskList = PomoTodoApp.getTasks();
         load();
     }
-    
+
     // REQUIRES: task != null
     // EFFECTS: loads the UI
     private void load() {
@@ -70,24 +70,24 @@ public class EditTaskController implements Initializable {
         displayPriority();
         displayTags();
     }
-    
+
     // REQUIRES: task != null
     private void displayTags() {
         for (Tag t : task.getTags()) {
             tags.getChips().add(t.getName());
         }
     }
-    
+
     // REQUIRES: task != null
     private void displayStatus() {
         statusComboBox.setValue(task.getStatus());
     }
-    
+
     // REQUIRES: task != null
     private void displayDescription() {
         description.setText(task.getDescription());
     }
-    
+
     // REQUIRES: task != null
     private void displayPriority() {
         if (task.getPriority().isUrgent()) {
@@ -97,7 +97,7 @@ public class EditTaskController implements Initializable {
             isImportantBox.setSelected(true);
         }
     }
-    
+
     // REQUIRES: task != null
     private void displayDueDate() {
         if (task.getDueDate() != Task.NO_DUE_DATE) {
@@ -108,21 +108,21 @@ public class EditTaskController implements Initializable {
             timePicker.setValue(null);
         }
     }
-    
+
     // REQUIRES: dateToConvert != null
     private LocalDate convertToLocalDate(Date dateToConvert) {
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
-    
+
     // REQUIRES: dateToConvert != null
     private LocalTime convertToLocalTime(Date dateToConvert) {
         return dateToConvert.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalTime();
     }
-    
+
     // REQUIRES: task != null
     // MODIFIES: this
     // EFFECTS: save the updates on UI to task
@@ -136,13 +136,13 @@ public class EditTaskController implements Initializable {
         Logger.log("EditTaskController", "Save task:\n" + task);
         PomoTodoApp.setScene(new ListView(taskList));
     }
-    
+
     // REQUIRES: task != null
     private void saveDescription() {
         Logger.log("EditTaskController", "Save description");
         task.setDescription(description.getText());
     }
-    
+
     // REQUIRES: task != null
     private void saveDueDate() {
         String dateStr = datePicker.getValue() + " " + timePicker.getValue();
@@ -162,7 +162,7 @@ public class EditTaskController implements Initializable {
             task.setDueDate(new DueDate(date));
         }
     }
-    
+
     // REQUIRES: task != null
     private void saveTags() {
         Logger.log("EditTaskController", "Delete the tags in task");
@@ -176,20 +176,20 @@ public class EditTaskController implements Initializable {
             task.addTag(name);
         }
     }
-    
+
     // REQUIRES: task != null
     private void saveStatus() {
         Logger.log("EditTaskController", "Save status");
         task.setStatus((Status) statusComboBox.getValue());
     }
-    
+
     // REQUIRES: task != null
     private void savePriority() {
         Logger.log("EditTaskController", "Save priority");
         task.getPriority().setImportant(isImportantBox.isSelected());
         task.getPriority().setUrgent(isUrgentBox.isSelected());
     }
-    
+
     @FXML
     public void cancelEditTask() {
         Logger.log("EditTaskController", "Edit Task cancelled.");
@@ -197,7 +197,7 @@ public class EditTaskController implements Initializable {
         PomoTodoApp.setScene(new ListView(jsonFileIO.read()));
         //Platform.exit();
     }
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         statusComboBox.getItems().addAll((Object[]) Status.values());

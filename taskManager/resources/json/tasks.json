@@ -104,5 +104,24 @@
             {"name": "todo"}
         ],
         "status": "TODO"
+    },
+    {
+        "due-date": {
+            "hour": 23,
+            "month": 7,
+            "year": 2019,
+            "day": 22,
+            "minute": 59
+        },
+        "description": "make co-op questions ",
+        "priority": {
+            "important": true,
+            "urgent": false
+        },
+        "tags": [
+            {"name": "cpsc"},
+            {"name": "todo"}
+        ],
+        "status": "TODO"
     }
 ]

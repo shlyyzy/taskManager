@@ -94,12 +94,15 @@
     },
     {
         "due-date": null,
-        "description": "Make notes #important; #todo; #cpsc",
+        "description": "Co-op modules ",
         "priority": {
-            "important": false,
-            "urgent": false
+            "important": true,
+            "urgent": true
         },
-        "tags": [],
+        "tags": [
+            {"name": "cpsc"},
+            {"name": "todo"}
+        ],
         "status": "TODO"
     }
 ]

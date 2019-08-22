@@ -6,7 +6,6 @@ import model.exceptions.NegativeInputException;
 import model.exceptions.NullArgumentException;
 import parsers.Parser;
 import parsers.TagParser;
-import parsers.TaskParser;
 import parsers.exceptions.ParsingException;
 
 import java.util.*;
@@ -122,7 +121,7 @@ public class Task extends Todo {
         return etcHours;
     }
 
-    // EFFECTS: returns current progress of taskw
+    // EFFECTS: returns current progress of task
     @Override
     public int getProgress() {
         return progress;
